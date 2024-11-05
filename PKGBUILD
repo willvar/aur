@@ -1,16 +1,17 @@
 # Maintainer: Leo <i@setuid0.dev>
+# Maintainer: William Varmus
 
 _extname=uuid
 pkgname=php-$_extname
-pkgver=1.2.0
-pkgrel=2
+pkgver=1.2.1
+pkgrel=1
 pkgdesc='PHP PECL UUID extension'
 arch=('x86_64')
 url="https://pecl.php.net/package/$_extname"
 license=('LGPL')
 depends=('php>=7.0')
 source=("http://pecl.php.net/get/$_extname-$pkgver.tgz")
-sha256sums=('5cb834d32fa7d270494aa47fd96e062ef819df59d247788562695fd1f4e470a4')
+sha256sums=('2235c8584ca8911ce5512ebf791e5bb1d849c323640ad3e0be507b00156481c7')
 
 build() {
     cd $srcdir/$_extname-$pkgver
