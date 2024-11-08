@@ -6,7 +6,7 @@
 _extname=msgpack
 pkgname=php-$_extname
 pkgver=3.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="PHP extension for interfacing with MessagePack"
 arch=("i686" "x86_64")
 license=('3-Clause-BSD')
