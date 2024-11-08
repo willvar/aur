@@ -12,7 +12,7 @@ arch=("i686" "x86_64")
 license=('3-Clause-BSD')
 url='https://github.com/msgpack/msgpack-php'
 depends=('php>=7.0')
-source=('https://pecl.php.net/get/$_extname-${pkgver}.tgz')
+source=("https://pecl.php.net/get/$_extname-${pkgver}.tgz")
 sha256sums=('55306a84797d399c6b269181ec484634f18bea1330bbd9d7405043c597de69cd')
 
 build() {
