@@ -34,8 +34,6 @@ prepare() {
     --enable-sockets \
     --enable-event-sockets
   echo "extension=${_extname}.so" > ${_extname}.ini
-	# Ensure sockets extension is enabled for testing
-  echo "extension=/usr/lib/php/modules/sockets.so" > test.ini
 }
 
 build() {
@@ -45,6 +43,7 @@ build() {
 
 check() {
   cd "${srcdir}/${_extname}-${pkgver}"
+  echo "extension=/usr/lib/php/modules/sockets.so" > test.ini
   TEST_PHP_ARGS="-q -n -c test.ini" make test
 }
 
