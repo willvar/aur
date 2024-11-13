@@ -1,22 +1,25 @@
+# Maintainer: Daniil "danogentili" Gentili <daniil@daniil.it>
 # Maintainer: William Varmus <0@willvar.tw>
+# Contributor: Felix Golatofski <contact@xdfr.de>
+# Contributor: 吕海涛 <aur@lvht.net>
 
-_extname=simdjson
-pkgname=php-$_extname
-pkgver=4.0.0
-pkgrel=2
-pkgdesc='Faster json decoding through simdjson bindings for PHP'
-arch=('x86_64')
-url='https://github.com/crazyxman/simdjson_php'
-license=('Apache 2.0')
+_extname=msgpack
+pkgname=php-${_extname}
+pkgver=3.0.0
+pkgrel=3
+pkgdesc="PHP extension for interfacing with MessagePack"
+arch=('i686' 'x86_64')
+license=('3-Clause-BSD')
+url='https://github.com/msgpack/msgpack-php'
 depends=('php>=7.0')
-source=("http://pecl.php.net/get/$_extname-$pkgver.tgz")
-sha256sums=('1fb48fe579ff0b6b8f991f236c0caed1645f672baa2abf7b3f8c9f21488119c8')
+source=("https://pecl.php.net/get/${_extname}-${pkgver}.tgz")
+sha256sums=('55306a84797d399c6b269181ec484634f18bea1330bbd9d7405043c597de69cd')
 
 prepare() {
   cd "${srcdir}/${_extname}-${pkgver}"
   phpize --clean
   phpize
-  ./configure --prefix=/usr --with-simdjson
+  ./configure --prefix=/usr
   echo "extension=${_extname}.so" > "${_extname}.ini"
 }
 
