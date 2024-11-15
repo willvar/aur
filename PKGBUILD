@@ -8,7 +8,7 @@ pkgver=3.1.4
 pkgrel=1
 pkgdesc='Provides interface to libevent library for PHP'
 arch=('x86_64')
-url="https://bitbucket.org/osmanov/${_extname}"
+url="https://bitbucket.org/osmanov/pecl-${_extname}"
 license=('PHP')
 depends=('php>=5.4' 'libevent' 'openssl')
 source=("https://pecl.php.net/get/${_extname}-${pkgver}.tgz")
