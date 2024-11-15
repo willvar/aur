@@ -2,7 +2,7 @@ pkgbase = php-event
 	pkgdesc = Provides interface to libevent library for PHP
 	pkgver = 3.1.4
 	pkgrel = 1
-	url = https://bitbucket.org/osmanov/event
+	url = https://bitbucket.org/osmanov/pecl-event
 	arch = x86_64
 	license = PHP
 	depends = php>=5.4
