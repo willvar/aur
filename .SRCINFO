@@ -1,13 +1,15 @@
 pkgbase = php-event
-	pkgdesc = PHP PECL extension providing interface to libevent library
-	pkgver = 3.0.5
+	pkgdesc = Provides interface to libevent library for PHP
+	pkgver = 3.1.4
 	pkgrel = 1
-	url = https://pecl.php.net/package/event
+	url = https://bitbucket.org/osmanov/event
 	arch = x86_64
 	license = PHP
-	depends = php>=7.3
-	depends = libevent>=2.0
-	source = https://pecl.php.net/get/event-3.0.5.tgz
-	sha256sums = 2c0df976ff1a54f9a22995156de2b4d46da97b9105b55c7cf6ec24caea40aa60
+	depends = php>=5.4
+	depends = libevent
+	depends = openssl
+	noextract = event-3.1.4.tgz
+	source = https://pecl.php.net/get/event-3.1.4.tgz
+	sha256sums = 5c4caa73bc2dceee31092ff9192139df28e9a80f1147ade0dfe869db2e4ddfd3
 
 pkgname = php-event
