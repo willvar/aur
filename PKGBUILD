@@ -4,7 +4,7 @@
 _extname=uuid
 pkgname=php-$_extname
 pkgver=1.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc='UUID extension for PHP'
 arch=('x86_64')
 url='https://github.com/php/pecl-networking-uuid'
