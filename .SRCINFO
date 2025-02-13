@@ -1,7 +1,7 @@
 pkgbase = php-uuid
 	pkgdesc = UUID extension for PHP
 	pkgver = 1.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/php/pecl-networking-uuid
 	arch = x86_64
 	license = LGPL
