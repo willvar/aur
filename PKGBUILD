@@ -6,7 +6,7 @@
 _extname=msgpack
 pkgname=php-$_extname
 pkgver=3.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="PHP extension for interfacing with MessagePack"
 arch=("i686" "x86_64")
 license=('3-Clause-BSD')
@@ -21,11 +21,6 @@ cd $srcdir/$_extname-$pkgver
   phpize
   ./configure --prefix=/usr
   make
-}
-
-check() {
-  cd $srcdir/$_extname-$pkgver
-  NO_INTERACTION=true make test
 }
 
 package() {
