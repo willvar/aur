@@ -3,19 +3,20 @@
 _extname=jsonpath
 pkgname=php-$_extname
 pkgdesc='Extract data using JSONPath notation for PHP'
-pkgver=2.1.0
+pkgver=3.0.0
 pkgrel=1
 arch=('x86_64')
 url='https://github.com/supermetrics-public/pecl-jsonpath'
 license=('PHP License')
 depends=('php>=8.0')
 source=("http://pecl.php.net/get/$_extname-$pkgver.tgz")
-sha256sums=('237dcc570790c68364d07102da29cf1d8e0ce6ca9dad076f6061817351bba7f2')
+sha256sums=('198ae484102b4404d94e2ad0b38d1dbf78ec55067f0b92f0dfaa2afcad906268')
 
 build() {
   cd $srcdir/$_extname-$pkgver
   echo "extension=$_extname" > $_extname.ini
   phpize
+  patch -p0 < ../../test-failure.diff
   ./configure --prefix=/usr --enable-jsonpath
   make
 }
