@@ -1,0 +1,15 @@
+--- build/Makefile.global	2025-03-29 22:33:03.006963080 +0800
++++ build/Makefile.global	2025-03-29 22:37:10.944210855 +0800
+@@ -83,11 +83,11 @@
+ 	if test "x$(PHP_ZEND_EX)" != "x"; then \
+ 		for i in $(PHP_ZEND_EX)""; do \
+ 			. $$i; $(top_srcdir)/build/shtool echo -n -- " -d zend_extension=$(top_builddir)/modules/$$dlname"; \
+ 		done; \
+ 	fi`
+-PHP_DEPRECATED_DIRECTIVES_REGEX = '^(magic_quotes_(gpc|runtime|sybase)?|(zend_)?extension(_debug)?(_ts)?)[\t\ ]*='
++PHP_DEPRECATED_DIRECTIVES_REGEX = '^(magic_quotes_(gpc|runtime|sybase)?|(zend_)?extension(_debug)?(_ts)?|session\.sid_(length|bits_per_character))[\t\ ]*='
+ 
+ test: all
+ 	@if test ! -z "$(PHP_EXECUTABLE)" && test -x "$(PHP_EXECUTABLE)"; then \
+ 		INI_FILE=`$(PHP_EXECUTABLE) -d 'display_errors=stderr' -r 'echo php_ini_loaded_file();' 2> /dev/null`; \
+ 		if test "$$INI_FILE"; then \

@@ -1,7 +1,7 @@
 pkgbase = php-simdjson
 	pkgdesc = Faster json decoding through simdjson bindings for PHP
 	pkgver = 4.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/crazyxman/simdjson_php
 	arch = x86_64
 	license = Apache 2.0
