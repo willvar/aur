@@ -3,21 +3,20 @@
 
 _extname=uuid
 pkgname=php-$_extname
-pkgver=1.2.1
-pkgrel=4
+pkgver=1.3.0
+pkgrel=1
 pkgdesc='UUID extension for PHP'
 arch=('x86_64')
 url='https://github.com/php/pecl-networking-uuid'
 license=('LGPL')
 depends=('php>=7.0')
 source=("http://pecl.php.net/get/$_extname-$pkgver.tgz")
-sha256sums=('2235c8584ca8911ce5512ebf791e5bb1d849c323640ad3e0be507b00156481c7')
+sha256sums=('b7af055e2c409622f8c5e6242d1c526c00e011a93c39b10ca28040b908da3f37')
 
 prepare() {
   cd "${srcdir}/${_extname}-${pkgver}"
   phpize --clean
   phpize
-  patch -p0 < ../../test-failure.diff
   ./configure --prefix=/usr --with-uuid
   echo "extension=${_extname}.so" > "${_extname}.ini"
 }
