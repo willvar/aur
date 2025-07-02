@@ -3,7 +3,7 @@
 _extname=simdjson
 pkgname=php-$_extname
 pkgver=4.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Faster json decoding through simdjson bindings for PHP'
 arch=('x86_64')
 url='https://github.com/crazyxman/simdjson_php'
@@ -16,7 +16,6 @@ prepare() {
   cd "${srcdir}/${_extname}-${pkgver}"
   phpize --clean
   phpize
-  patch -p0 < ../../test-failure.diff
   ./configure --prefix=/usr --with-simdjson
   echo "extension=${_extname}.so" > "${_extname}.ini"
 }
