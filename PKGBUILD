@@ -6,7 +6,7 @@
 _extname=msgpack
 pkgname=php-$_extname
 pkgver=3.0.0
-pkgrel=4
+pkgrel=5
 pkgdesc="PHP extension for interfacing with MessagePack"
 arch=("i686" "x86_64")
 license=('3-Clause-BSD')
@@ -16,22 +16,21 @@ source=("https://pecl.php.net/get/$_extname-${pkgver}.tgz")
 sha256sums=('55306a84797d399c6b269181ec484634f18bea1330bbd9d7405043c597de69cd')
 
 prepare() {
-  cd $srcdir/$_extname-$pkgver
+  cd "${srcdir}/${_extname}-${pkgver}"
   phpize --clean
   phpize
-  patch -p0 < ../../test-failure.diff
   ./configure --prefix=/usr --with-msgpack
-  echo extension=$_extname > $_extname.ini
+  echo "extension=${_extname}.so" > "${_extname}.ini"
 }
 
 build() {
-  cd $srcdir/$_extname-$pkgver
+  cd "${srcdir}/${_extname}-${pkgver}"
   make
 }
 
 check() {
-  cd $srcdir/$_extname-$pkgver
-  NO_INTERACTION=true make test
+  cd "${srcdir}/${_extname}-${pkgver}"
+  TEST_PHP_ARGS="-q -n" make test
 }
 
 package() {
