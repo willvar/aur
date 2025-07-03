@@ -1,0 +1,12 @@
+pkgbase = php-uuid
+	pkgdesc = UUID extension for PHP
+	pkgver = 1.3.0
+	pkgrel = 1
+	url = https://github.com/php/pecl-networking-uuid
+	arch = x86_64
+	license = LGPL
+	depends = php>=7.0
+	source = http://pecl.php.net/get/uuid-1.3.0.tgz
+	sha256sums = b7af055e2c409622f8c5e6242d1c526c00e011a93c39b10ca28040b908da3f37
+
+pkgname = php-uuid
