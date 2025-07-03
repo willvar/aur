@@ -1,0 +1,15 @@
+pkgbase = ossutil-bin
+	pkgdesc = A user-friendly command-line tool to access AliCloud OSS.
+	pkgver = 1.7.19
+	pkgrel = 1
+	url = https://github.com/aliyun/ossutil
+	arch = x86_64
+	license = MIT
+	provides = ossutil
+	conflicts = ossutil
+	source = https://raw.githubusercontent.com/aliyun/ossutil/master/LICENSE
+	source = ossutil-bin-1.7.19.zip::https://gosspublic.alicdn.com/ossutil/1.7.19/ossutil-v1.7.19-linux-amd64.zip
+	sha256sums = 5dee8031676245920361e38dde7cc4d91f2b063f1c5a2b2a66cab1c008845b0b
+	sha256sums = dcc512e4a893e16bbee63bc769339d8e56b21744fd83c8212a9d8baf28767343
+
+pkgname = ossutil-bin
