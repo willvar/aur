@@ -1,0 +1,22 @@
+# Build directories in package folders
+*/src/
+*/pkg/
+
+# Source tarballs
+*.tgz
+*.tar.gz
+*.tar.xz
+*.tar.bz
+*.tar.bzip2
+*.zip
+
+# Source packages
+*.rpm
+*.deb
+
+# Downloaded license files
+*-LICENSE
+*-license
+
+# Built packages
+*.pkg.tar*
