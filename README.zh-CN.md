@@ -8,6 +8,7 @@
 
 | 包名 | 描述 | AUR 链接 |
 |------|------|----------|
+| [nginx-mainline-mod-zstd-git](nginx-mainline-mod-zstd-git/) | Nginx 主线版 Zstandard 压缩模块 | [AUR](https://aur.archlinux.org/packages/nginx-mainline-mod-zstd-git) |
 | [ossfs2-bin](ossfs2-bin/) | 阿里云 OSS 高性能 POSIX 客户端 | [AUR](https://aur.archlinux.org/packages/ossfs2-bin) |
 | [ossutil-bin](ossutil-bin/) | 阿里云 OSS 命令行工具 | [AUR](https://aur.archlinux.org/packages/ossutil-bin) |
 | [ossutil](ossutil/) | 阿里云 OSS 命令行工具（源码版） | [AUR](https://aur.archlinux.org/packages/ossutil) |

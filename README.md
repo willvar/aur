@@ -8,6 +8,7 @@ This repository maintains packages for the [Arch User Repository](https://aur.ar
 
 | Package | Description | AUR Link |
 |---------|-------------|----------|
+| [nginx-mainline-mod-zstd-git](nginx-mainline-mod-zstd-git/) | Zstandard compression module for mainline nginx | [AUR](https://aur.archlinux.org/packages/nginx-mainline-mod-zstd-git) |
 | [ossfs2-bin](ossfs2-bin/) | High Performance OSS POSIX Client for Alibaba Cloud | [AUR](https://aur.archlinux.org/packages/ossfs2-bin) |
 | [ossutil-bin](ossutil-bin/) | Command-line tool to access AliCloud OSS | [AUR](https://aur.archlinux.org/packages/ossutil-bin) |
 | [ossutil](ossutil/) | Command-line tool to access AliCloud OSS (source) | [AUR](https://aur.archlinux.org/packages/ossutil) |
