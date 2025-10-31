@@ -17,6 +17,7 @@
 | [php-msgpack](php-msgpack/) | PHP MessagePack 序列化扩展 | [AUR](https://aur.archlinux.org/packages/php-msgpack) |
 | [php-simdjson](php-simdjson/) | PHP SIMDJSON 快速 JSON 解析扩展 | [AUR](https://aur.archlinux.org/packages/php-simdjson) |
 | [php-uuid](php-uuid/) | PHP UUID 扩展 | [AUR](https://aur.archlinux.org/packages/php-uuid) |
+| [proxysql-bin](proxysql-bin/) | 高性能 MySQL 代理，支持查询路由、缓存和负载均衡 | [AUR](https://aur.archlinux.org/packages/proxysql-bin) |
 
 ## 安装方法
 
