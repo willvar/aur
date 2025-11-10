@@ -1,0 +1,13 @@
+# Fix CMake minimum version for MariaDB connector
+# CMake 3.27+ deprecated versions < 3.5, CMake 4.0.0 removed compatibility
+--- CMakeLists.txt.orig	2025-11-01 10:00:00.000000000 +0000
++++ CMakeLists.txt	2025-11-01 10:00:00.000000000 +0000
+@@ -2,7 +2,7 @@
+
+ # This is the LGPL libmariadb project.
+
+-CMAKE_MINIMUM_REQUIRED(VERSION 2.8.12 FATAL_ERROR)
++CMAKE_MINIMUM_REQUIRED(VERSION 3.5 FATAL_ERROR)
+ INCLUDE(CheckFunctionExists)
+ IF(COMMAND CMAKE_POLICY)
+   SET(NEW_POLICIES CMP0003 CMP0022 CMP0023 CMP0057 CMP0077 CMP0069 CMP0075)
