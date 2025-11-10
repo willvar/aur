@@ -209,6 +209,20 @@ cleanup_build_artifacts() {
     while IFS= read -r src; do
       [[ -z "$src" ]] && continue
 
+      # Determine what to check: full string or part after ::
+      local check_string="$src"
+      if [[ "$src" =~ :: ]]; then
+        # Format: filename::URL, check the URL part
+        check_string="${src#*::}"
+      fi
+
+      # Only clean if it's a URL (starts with scheme://)
+      # Common schemes: http, https, ftp, git, file, etc.
+      # Regex follows RFC 3986: scheme = ALPHA *( ALPHA / DIGIT / "+" / "-" / "." )
+      if [[ ! "$check_string" =~ ^[a-z][a-z0-9+.-]*:// ]]; then
+        continue  # Not a URL, skip (it's a local file)
+      fi
+
       # Extract filename from source
       # Handle format: "filename::URL" or just "URL"
       local filename
@@ -222,7 +236,7 @@ cleanup_build_artifacts() {
         filename="${filename%%\?*}"
       fi
 
-      # Remove the file if it exists
+      # Remove the downloaded file if it exists
       [[ -f "$filename" ]] && rm -f "$filename"
     done <<< "$sources"
   fi
