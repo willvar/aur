@@ -502,6 +502,147 @@ source=(
 
 ---
 
+## systemd Integration
+
+For packages that provide system services or daemons, we use modern systemd features for better reliability and maintainability.
+
+### System Users and Directories
+
+**Use `sysusers.d` and `tmpfiles.d` instead of `.install` scripts** for creating system users and runtime directories.
+
+#### Why This Approach?
+
+- ✅ **Declarative and reliable**: systemd handles edge cases automatically
+- ✅ **Safer**: Atomic operations, no script errors during installation
+- ✅ **Modern standard**: Follows systemd and Arch Linux best practices
+- ✅ **Easier to maintain**: Simple config files instead of bash scripts
+
+#### Implementation Steps
+
+**1. Create `pkgname.sysusers` file:**
+
+```
+u username - "Description" /home/dir /bin/false
+```
+
+Example from `proxysql-bin.sysusers`:
+```
+u proxysql - "ProxySQL Server" /var/lib/proxysql /bin/false
+```
+
+**2. Create `pkgname.tmpfiles` file:**
+
+```
+d /path/to/directory mode user group age
+```
+
+Example from `proxysql-bin.tmpfiles`:
+```
+d /var/lib/proxysql 0770 proxysql proxysql -
+```
+
+**3. Add to PKGBUILD `source` array:**
+
+```bash
+source=("upstream-tarball.tar.gz"
+        "${pkgname}.sysusers"
+        "${pkgname}.tmpfiles")
+sha256sums=('...'
+            'SKIP'
+            'SKIP')
+```
+
+**4. Install in `package()` function:**
+
+```bash
+# Install sysusers and tmpfiles
+install -Dm644 "${srcdir}/${pkgname}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
+install -Dm644 "${srcdir}/${pkgname}.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
+```
+
+**5. Simplify `.install` script** (optional - only for user messages):
+
+```bash
+post_install() {
+  # systemd-sysusers and systemd-tmpfiles handle user/directory creation
+
+  # Only custom setup that can't be done declaratively
+  chown root:username /etc/pkgname.conf
+  chmod 640 /etc/pkgname.conf
+
+  echo "==> Package has been installed."
+  echo "==> To start: systemctl start pkgname"
+  echo "==> To enable on boot: systemctl enable pkgname"
+}
+```
+
+### Service Files
+
+**Install systemd service files to the correct location:**
+
+```bash
+# Correct location
+install -Dm644 pkgname.service "${pkgdir}/usr/lib/systemd/system/pkgname.service"
+```
+
+**Security Hardening Checklist:**
+
+When creating or modifying systemd service files, include appropriate security options:
+
+```ini
+[Service]
+# Basic security
+User=username
+Group=groupname
+NoNewPrivileges=true
+
+# Filesystem protection
+ProtectHome=yes
+ProtectSystem=full
+PrivateDevices=yes
+PrivateTmp=yes
+
+# Capabilities (adjust as needed)
+CapabilityBoundingSet=CAP_SETGID CAP_SETUID CAP_SYS_RESOURCE
+
+# Network restrictions (if applicable)
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
+
+# Resource limits (adjust as needed)
+LimitNOFILE=102400
+```
+
+See `man systemd.exec` for all available options.
+
+### Configuration Backup
+
+**Always declare configuration files in the `backup` array:**
+
+```bash
+backup=('etc/pkgname.conf')
+```
+
+This ensures user modifications are preserved during upgrades.
+
+### Log Rotation
+
+**For services that generate logs, provide logrotate configuration:**
+
+```bash
+# Install logrotate config
+install -Dm644 etc/logrotate.d/pkgname "${pkgdir}/etc/logrotate.d/pkgname"
+```
+
+### Complete Example
+
+See `proxysql-bin` package for a complete working example:
+- `proxysql-bin/proxysql-bin.sysusers`
+- `proxysql-bin/proxysql-bin.tmpfiles`
+- `proxysql-bin/PKGBUILD`
+- `proxysql-bin/proxysql-bin.install`
+
+---
+
 ## Important Notes
 
 ### Git Hooks

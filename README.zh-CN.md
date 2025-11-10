@@ -8,15 +8,18 @@
 
 | 包名 | 描述 | AUR 链接 |
 |------|------|----------|
+| [aurpick](aurpick/) | 轻松安装 AUR 包的任意版本 — 当前、历史或更新版本 | [AUR](https://aur.archlinux.org/packages/aurpick) |
 | [nginx-mainline-mod-zstd-git](nginx-mainline-mod-zstd-git/) | Nginx 主线版 Zstandard 压缩模块 | [AUR](https://aur.archlinux.org/packages/nginx-mainline-mod-zstd-git) |
+| [ossfs-bin](ossfs-bin/) | 基于 FUSE 的阿里云 OSS 文件系统 | [AUR](https://aur.archlinux.org/packages/ossfs-bin) |
 | [ossfs2-bin](ossfs2-bin/) | 阿里云 OSS 高性能 POSIX 客户端 | [AUR](https://aur.archlinux.org/packages/ossfs2-bin) |
-| [ossutil-bin](ossutil-bin/) | 阿里云 OSS 命令行工具 | [AUR](https://aur.archlinux.org/packages/ossutil-bin) |
 | [ossutil](ossutil/) | 阿里云 OSS 命令行工具（源码版） | [AUR](https://aur.archlinux.org/packages/ossutil) |
+| [ossutil-bin](ossutil-bin/) | 阿里云 OSS 命令行工具 | [AUR](https://aur.archlinux.org/packages/ossutil-bin) |
 | [php-event](php-event/) | PHP 事件驱动 I/O 扩展 | [AUR](https://aur.archlinux.org/packages/php-event) |
 | [php-jsonpath](php-jsonpath/) | PHP JSONPath 实现 | [AUR](https://aur.archlinux.org/packages/php-jsonpath) |
 | [php-msgpack](php-msgpack/) | PHP MessagePack 序列化扩展 | [AUR](https://aur.archlinux.org/packages/php-msgpack) |
 | [php-simdjson](php-simdjson/) | PHP SIMDJSON 快速 JSON 解析扩展 | [AUR](https://aur.archlinux.org/packages/php-simdjson) |
 | [php-uuid](php-uuid/) | PHP UUID 扩展 | [AUR](https://aur.archlinux.org/packages/php-uuid) |
+| [proxysql](proxysql/) | 高性能 MySQL 代理源码构建版（等待 AUR 维护权限） | - |
 | [proxysql-bin](proxysql-bin/) | 高性能 MySQL 代理，支持查询路由、缓存和负载均衡 | [AUR](https://aur.archlinux.org/packages/proxysql-bin) |
 
 ## 安装方法

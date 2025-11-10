@@ -502,6 +502,147 @@ source=(
 
 ---
 
+## systemd 集成
+
+对于提供系统服务或守护进程的包，我们使用现代 systemd 特性以获得更好的可靠性和可维护性。
+
+### 系统用户和目录
+
+**使用 `sysusers.d` 和 `tmpfiles.d` 替代 `.install` 脚本**来创建系统用户和运行时目录。
+
+#### 为什么采用这种方式？
+
+- ✅ **声明式且可靠**：systemd 自动处理边界情况
+- ✅ **更安全**：原子操作，安装期间不会出现脚本错误
+- ✅ **现代标准**：遵循 systemd 和 Arch Linux 最佳实践
+- ✅ **更易维护**：简单的配置文件而非 bash 脚本
+
+#### 实现步骤
+
+**1. 创建 `pkgname.sysusers` 文件：**
+
+```
+u username - "Description" /home/dir /bin/false
+```
+
+来自 `proxysql-bin.sysusers` 的示例：
+```
+u proxysql - "ProxySQL Server" /var/lib/proxysql /bin/false
+```
+
+**2. 创建 `pkgname.tmpfiles` 文件：**
+
+```
+d /path/to/directory mode user group age
+```
+
+来自 `proxysql-bin.tmpfiles` 的示例：
+```
+d /var/lib/proxysql 0770 proxysql proxysql -
+```
+
+**3. 添加到 PKGBUILD 的 `source` 数组：**
+
+```bash
+source=("upstream-tarball.tar.gz"
+        "${pkgname}.sysusers"
+        "${pkgname}.tmpfiles")
+sha256sums=('...'
+            'SKIP'
+            'SKIP')
+```
+
+**4. 在 `package()` 函数中安装：**
+
+```bash
+# 安装 sysusers 和 tmpfiles
+install -Dm644 "${srcdir}/${pkgname}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
+install -Dm644 "${srcdir}/${pkgname}.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
+```
+
+**5. 简化 `.install` 脚本**（可选 - 仅用于用户消息）：
+
+```bash
+post_install() {
+  # systemd-sysusers 和 systemd-tmpfiles 处理用户/目录创建
+
+  # 只保留无法声明式完成的自定义设置
+  chown root:username /etc/pkgname.conf
+  chmod 640 /etc/pkgname.conf
+
+  echo "==> 包已安装。"
+  echo "==> 启动服务：systemctl start pkgname"
+  echo "==> 开机自启：systemctl enable pkgname"
+}
+```
+
+### Service 文件
+
+**将 systemd service 文件安装到正确位置：**
+
+```bash
+# 正确位置
+install -Dm644 pkgname.service "${pkgdir}/usr/lib/systemd/system/pkgname.service"
+```
+
+**安全加固检查清单：**
+
+创建或修改 systemd service 文件时，包含适当的安全选项：
+
+```ini
+[Service]
+# 基本安全
+User=username
+Group=groupname
+NoNewPrivileges=true
+
+# 文件系统保护
+ProtectHome=yes
+ProtectSystem=full
+PrivateDevices=yes
+PrivateTmp=yes
+
+# 能力限制（根据需要调整）
+CapabilityBoundingSet=CAP_SETGID CAP_SETUID CAP_SYS_RESOURCE
+
+# 网络限制（如适用）
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
+
+# 资源限制（根据需要调整）
+LimitNOFILE=102400
+```
+
+参见 `man systemd.exec` 了解所有可用选项。
+
+### 配置文件备份
+
+**始终在 `backup` 数组中声明配置文件：**
+
+```bash
+backup=('etc/pkgname.conf')
+```
+
+这确保用户修改在升级期间得以保留。
+
+### 日志轮转
+
+**对于生成日志的服务，提供 logrotate 配置：**
+
+```bash
+# 安装 logrotate 配置
+install -Dm644 etc/logrotate.d/pkgname "${pkgdir}/etc/logrotate.d/pkgname"
+```
+
+### 完整示例
+
+参见 `proxysql-bin` 包的完整工作示例：
+- `proxysql-bin/proxysql-bin.sysusers`
+- `proxysql-bin/proxysql-bin.tmpfiles`
+- `proxysql-bin/PKGBUILD`
+- `proxysql-bin/proxysql-bin.install`
+
+---
+
 ## 重要说明
 
 ### Git Hooks

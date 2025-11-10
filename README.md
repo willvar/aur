@@ -8,15 +8,18 @@ This repository maintains packages for the [Arch User Repository](https://aur.ar
 
 | Package | Description | AUR Link |
 |---------|-------------|----------|
+| [aurpick](aurpick/) | Easily install any version of AUR packages — current, historical, or newer | [AUR](https://aur.archlinux.org/packages/aurpick) |
 | [nginx-mainline-mod-zstd-git](nginx-mainline-mod-zstd-git/) | Zstandard compression module for mainline nginx | [AUR](https://aur.archlinux.org/packages/nginx-mainline-mod-zstd-git) |
+| [ossfs-bin](ossfs-bin/) | FUSE-based file system backed by Alibaba Cloud OSS | [AUR](https://aur.archlinux.org/packages/ossfs-bin) |
 | [ossfs2-bin](ossfs2-bin/) | High Performance OSS POSIX Client for Alibaba Cloud | [AUR](https://aur.archlinux.org/packages/ossfs2-bin) |
-| [ossutil-bin](ossutil-bin/) | Command-line tool to access AliCloud OSS | [AUR](https://aur.archlinux.org/packages/ossutil-bin) |
 | [ossutil](ossutil/) | Command-line tool to access AliCloud OSS (source) | [AUR](https://aur.archlinux.org/packages/ossutil) |
+| [ossutil-bin](ossutil-bin/) | Command-line tool to access AliCloud OSS | [AUR](https://aur.archlinux.org/packages/ossutil-bin) |
 | [php-event](php-event/) | PHP extension for event-driven I/O | [AUR](https://aur.archlinux.org/packages/php-event) |
 | [php-jsonpath](php-jsonpath/) | PHP JSONPath implementation | [AUR](https://aur.archlinux.org/packages/php-jsonpath) |
 | [php-msgpack](php-msgpack/) | PHP MessagePack serialization extension | [AUR](https://aur.archlinux.org/packages/php-msgpack) |
 | [php-simdjson](php-simdjson/) | PHP SIMDJSON extension for fast JSON parsing | [AUR](https://aur.archlinux.org/packages/php-simdjson) |
 | [php-uuid](php-uuid/) | PHP UUID extension | [AUR](https://aur.archlinux.org/packages/php-uuid) |
+| [proxysql](proxysql/) | High-performance MySQL proxy built from source (waiting for AUR maintainer access) | - |
 | [proxysql-bin](proxysql-bin/) | High-performance MySQL proxy with query routing, caching, and load balancing | [AUR](https://aur.archlinux.org/packages/proxysql-bin) |
 
 ## Installation
