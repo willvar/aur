@@ -1,0 +1,10 @@
+# Fix CMake minimum version for MariaDB bundled zlib
+# CMake 3.27+ deprecated versions < 3.5, CMake 4.0.0 removed compatibility
+--- external/zlib/CMakeLists.txt.orig	2025-11-01 10:00:00.000000000 +0000
++++ external/zlib/CMakeLists.txt	2025-11-01 10:00:00.000000000 +0000
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 2.4.4)
++cmake_minimum_required(VERSION 3.5)
+ set(CMAKE_ALLOW_LOOSE_LOOP_CONSTRUCTS ON)
+
+ project(zlib C)
