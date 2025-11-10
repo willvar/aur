@@ -1,0 +1,14 @@
+# Fix bool typedef conflict with C23 standard
+# C23 makes bool/true/false built-in keywords (__STDC_VERSION__ == 202311L)
+# GCC 15 defaults to gnu23, avoid redefining bool when it's already a keyword
+--- src/include/c.h.orig	2025-11-01 10:00:00.000000000 +0000
++++ src/include/c.h	2025-11-01 10:00:00.000000000 +0000
+@@ -436,7 +436,7 @@
+ #include <stdbool.h>
+ #else
+
+-#ifndef bool
++#if !defined(bool) && (!defined(__STDC_VERSION__) || __STDC_VERSION__ < 202311L)
+ typedef unsigned char bool;
+ #endif
+
