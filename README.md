@@ -19,7 +19,7 @@ This repository maintains packages for the [Arch User Repository](https://aur.ar
 | [php-msgpack](php-msgpack/) | PHP MessagePack serialization extension | [AUR](https://aur.archlinux.org/packages/php-msgpack) |
 | [php-simdjson](php-simdjson/) | PHP SIMDJSON extension for fast JSON parsing | [AUR](https://aur.archlinux.org/packages/php-simdjson) |
 | [php-uuid](php-uuid/) | PHP UUID extension | [AUR](https://aur.archlinux.org/packages/php-uuid) |
-| [proxysql](proxysql/) | High-performance MySQL proxy built from source (waiting for AUR maintainer access) | - |
+| [proxysql](proxysql/) | High-performance MySQL proxy with query routing, caching, and load balancing (built from source) | [AUR](https://aur.archlinux.org/packages/proxysql) |
 | [proxysql-bin](proxysql-bin/) | High-performance MySQL proxy with query routing, caching, and load balancing | [AUR](https://aur.archlinux.org/packages/proxysql-bin) |
 
 ## Installation
