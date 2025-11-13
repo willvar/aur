@@ -1,4 +1,6 @@
 # Maintainer: William Varmus <0@willvar.tw>
+# Contributor: Boris Momčilović <boris.momcilovic@gmail.com>
+# Contributor: Matthew McGinn <mamcgi@gmail.com>
 
 pkgname=proxysql
 pkgver=3.0.2
