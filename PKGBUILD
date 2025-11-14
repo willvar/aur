@@ -4,7 +4,7 @@
 
 pkgname=proxysql
 pkgver=3.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc='High-performance MySQL proxy with query routing, caching, and load balancing (built from source)'
 arch=('x86_64')
 url="https://proxysql.com/"
@@ -13,8 +13,6 @@ options=('!lto')
 depends=('gnutls' 'openssl')
 makedepends=('cmake')
 optdepends=('perl: for Galera cluster tools')
-provides=('proxysql')
-conflicts=('proxysql-bin')
 backup=('etc/proxysql.cnf')
 install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/sysown/proxysql/archive/refs/tags/v${pkgver}.tar.gz"
