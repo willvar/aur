@@ -20,3 +20,6 @@
 
 # Built packages
 *.pkg.tar*
+
+# Agent instructions (local reference, not part of AUR/GitHub)
+AGENTS.md
