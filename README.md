@@ -19,6 +19,8 @@ This repository maintains packages for the [Arch User Repository](https://aur.ar
 | [php-msgpack](php-msgpack/) | PHP MessagePack serialization extension | [AUR](https://aur.archlinux.org/packages/php-msgpack) |
 | [php-simdjson](php-simdjson/) | PHP SIMDJSON extension for fast JSON parsing | [AUR](https://aur.archlinux.org/packages/php-simdjson) |
 | [php-uuid](php-uuid/) | PHP UUID extension | [AUR](https://aur.archlinux.org/packages/php-uuid) |
+| [php-xlswriter](php-xlswriter/) | Efficient C extension for creating and reading XLSX (Excel 2007+) files | [AUR](https://aur.archlinux.org/packages/php-xlswriter) |
+| [php-opentelemetry](php-opentelemetry/) | OpenTelemetry auto-instrumentation support extension for PHP | [AUR](https://aur.archlinux.org/packages/php-opentelemetry) |
 | [proxysql](proxysql/) | High-performance MySQL proxy with query routing, caching, and load balancing (built from source) | [AUR](https://aur.archlinux.org/packages/proxysql) |
 | [proxysql-bin](proxysql-bin/) | High-performance MySQL proxy with query routing, caching, and load balancing | [AUR](https://aur.archlinux.org/packages/proxysql-bin) |
 
